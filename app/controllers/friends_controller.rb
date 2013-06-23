@@ -64,7 +64,7 @@ class FriendsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_friend
-      @friend = Friend.find(params[:id])
+      @friend = Friend.find_by_uid(params[:id].gsub('-', '.')) || Friend.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
